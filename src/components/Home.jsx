@@ -9,7 +9,6 @@ import Charts from './Charts.jsx'
 
 const Wrapper = styled.div`
 
-    font-family: 'Rasa', serif;
     position: relative;
 
 `
@@ -38,11 +37,7 @@ class Home extends Component {
     render() {
         return (
             <Wrapper className="wrapper">
-              <Navigator></Navigator>
-              <Body>
               <Blog></Blog>
-              </Body>
-              <Charts className="floatRight"></Charts>
             </Wrapper>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import anime from 'animejs'
 import Typing from 'react-typing-animation';
+import Prismic from "prismic-javascript";
 
 
 const Wrapper = styled.div`
@@ -22,6 +23,8 @@ const Wrapper = styled.div`
         text-align: center;
         border-bottom: 1px solid rgba(0,0,0,.3);
         padding: 13px 10px 10px 10px;
+        font-style: italic;
+        text-transform: uppercase;
     }
 
     .songTile:hover {
@@ -53,10 +56,10 @@ const SongContainer = styled.div`
 `
 const SongTile = styled.div`
 
-    // background-color: lightblue;
     padding: 10px 20px;
     display: flex;
-    opacity: 0;
+    opacity: 1;
+    background-color: pink;
 
     margin: 5px 0;
 
@@ -69,7 +72,7 @@ const SongTile = styled.div`
 
     .songInfo{
         margin-left: 20px;
-        opacity: 0;
+        opacity: 1;
     }
 
     h1, h2, h3, h4, p {
@@ -84,12 +87,24 @@ const SongTile = styled.div`
 class Charts extends Component {
 
     state = {
-        articles: []
+        charts: [
+            {data: [
+                {
+                    song: [
+                        {text: "test"}
+                    ]
+                }
+            ]
+            }
+        ]
+    }
+
+    componentDidUpdate() {
+
     }
 
 
     componentDidMount() {
-
 
         var tl = anime.timeline({
             easing: 'easeOutExpo',
@@ -114,75 +129,19 @@ class Charts extends Component {
 
     }
 
-    componentDidUpdate() {
-
-    }
-
-    songs = [
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-        {
-            name: "Get Down",
-            artist: "Parklets",
-            date: "May 14, 2019"
-        },
-    ]
 
     render() {
         return (
             <Wrapper className="wrapper">
                 <h1>The Latest</h1>
+                <h1></h1>
                 <Genres>
                     <div className="tab">Indie</div>
                     <div className="tab">Electronic</div>
                     <div className="tab">Hip-Hop</div>
                 </Genres>
                 <SongContainer className="container">
-                {this.songs && this.songs.map((songs, i) => (
-                    <SongTile className="songTile">
-                        <div className="albumCover">
-                        </div>
-                        <div className="songInfo">
-                            <h3><Typing startDelay={1500} hideCursor={true}>{songs.name}</Typing></h3>
-                            <h4><Typing startDelay={1700} hideCursor={true}>{songs.artist}</Typing></h4>
-                            <p><Typing startDelay={2000} hideCursor={true}>{songs.date}</Typing></p>
-                        </div>
 
-                    </SongTile>
-                    ))}
                 </SongContainer>
             </Wrapper>
         );
